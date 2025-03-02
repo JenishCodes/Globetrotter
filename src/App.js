@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router } from "react-router-dom";
+
+import Challenge from "./pages/Challenge";
+import Profile from "./pages/Profile";
+import Main from "./pages/Main";
+import "./App.css";
+import Answer from "./pages/Answer";
+import { AuthProvider } from "./AuthContext";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AuthProvider>
+        <Router>
+          <div style={{ display: "flex" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                width: "20%",
+                height: "100vh",
+                borderRight: "solid 1px",
+              }}
+            >
+              <Challenge />
+              <Profile />
+            </div>
+            <Main />
+            <Answer />
+          </div>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }
