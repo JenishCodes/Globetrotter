@@ -15,10 +15,14 @@ export const callApi = async (route, method, body = null) => {
     headers: headers,
     body: body && JSON.stringify(body),
   };
-  console.log(API_URL + route)
+  console.log(API_URL + route);
   const res = await fetch(API_URL + route, request);
 
   if (!res.ok && res.status === 401) signOut();
 
   return await res.json();
+};
+
+export const getAPIURL = () => {
+  return API_URL;
 };

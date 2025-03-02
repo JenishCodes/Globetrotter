@@ -3,8 +3,7 @@ import { AuthContext } from "../AuthContext";
 import { createChallenge, getUser } from "../services/user";
 import { Modal } from "antd";
 import "./style.css";
-
-const API_URL = process.env.REACT_APP_API_URL;
+import { getAPIURL } from "../services/util";
 
 export default function Profile() {
   const { signup, isUserSignedIn, signout } = useContext(AuthContext);
@@ -35,8 +34,8 @@ export default function Profile() {
     setIsModalOpen(true);
     createChallenge()
       .then((data) => {
-        setLink(API_URL + "/user/challenges/" + data.uri);
-        setImage(API_URL + "/user/dynamic-images/" + data.uri + ".png");
+        setLink(getAPIURL() + "/user/challenges/" + data.uri);
+        setImage(getAPIURL() + "/user/dynamic-images/" + data.uri + ".png");
       })
       .catch((err) => alert(err.message));
   };
