@@ -36,7 +36,7 @@ export default function Challenge() {
             <div className="challenger-name">
               Challenger: {challenger.username}
             </div>
-            <div className="challenger-score">Score: {challenger.score}</div>
+            <div className="challenger-score">Score: {challenger.score || 0}</div>
           </div>
         )}
         <div className="player-section">
